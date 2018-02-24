@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import PostsPage from './Posts/PostsPage.js';
-import CommentsPage from './Comments/CommentsPage.js';
+import PostsPage from '../Posts/PostsPage.js';
+import CommentsPage from '../Comments/CommentsPage.js';
 
 class App extends Component {
   render() {

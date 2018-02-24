@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 import PageTitle from '../Common/PageTitle.js';
-import CommentsForm from '../Comments/CommentsForm.js';
-import CommentsList from '../Comments/CommentsList.js';
+import CommentsForm from './CommentsForm.js';
+import CommentsList from './CommentsList.js';
 
 export default class CommentsPage extends React.Component {
 
@@ -12,26 +12,7 @@ export default class CommentsPage extends React.Component {
     super();
 
     this.state = {
-      comments: [
-        {
-          id: 0,
-          name: 'Freddy',
-          date: '10.12.2017',
-          body: 'Hello my dear friend!'
-        },
-        {
-          id: 1,
-          name: 'Lesly',
-          date: '11.12.2017',
-          body: 'How are you doing?'
-        },
-        {
-          id: 2,
-          name: 'Freddy',
-          date: '12.12.2017',
-          body: 'Fine, thanks for your attention :)'
-        }
-      ]
+      comments: []
     }
 
   }

@@ -120,6 +120,9 @@ export default class CommentsForm extends React.Component {
           setValidationState(validator, inputValue.length > validator.value);
 
           break;
+
+        default:
+          break;
       
       }
 
