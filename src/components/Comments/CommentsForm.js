@@ -96,7 +96,7 @@ export default class CommentsForm extends React.Component {
         validator.invalid = false;
 
       }
-    }
+    };
 
     // reset validation
     input.invalid = false;

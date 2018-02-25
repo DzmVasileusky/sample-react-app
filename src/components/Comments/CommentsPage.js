@@ -7,24 +7,12 @@ import CommentsList from './CommentsList.js';
 
 export default class CommentsPage extends React.Component {
 
-  constructor() {
-
-    super();
-
-    this.state = {
-      comments: []
-    }
-
-  }
-
   componentDidMount () {
 
     axios.get('https://jsonplaceholder.typicode.com/comments')
     .then((response) => {
 
-      this.setState({
-        comments: response.data.slice(0, 20)
-      });
+      this.props.onFetchComments(response.data.slice(0, 20));
 
     })
     .catch((error) => {
@@ -36,11 +24,9 @@ export default class CommentsPage extends React.Component {
   }
 
   saveComments(comment) {
-    comment.id = this.state.comments.length;
 
-    this.setState(prevState => ({
-      comments: [...prevState.comments, comment]
-    }));
+    this.props.onAddComment(comment);
+
   }
 
   render() {
@@ -49,7 +35,7 @@ export default class CommentsPage extends React.Component {
       <div className="container">
         <PageTitle name="Comments" count="10" />
         <CommentsForm saveComments={this.saveComments.bind(this)} />
-        <CommentsList comments={this.state.comments} />
+        <CommentsList comments={this.props.comments} />
       </div>
     );
 
