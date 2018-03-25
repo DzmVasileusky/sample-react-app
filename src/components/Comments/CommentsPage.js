@@ -1,11 +1,25 @@
 import React from 'react';
 import axios from 'axios';
+import 'promise.prototype.finally/auto';
 
 import PageTitle from '../Common/PageTitle.js';
 import CommentsForm from './CommentsForm.js';
 import CommentsList from './CommentsList.js';
+import withLoading from 'hoc/withLoading.js';
+
+const CommentsListWithLoading = withLoading(CommentsList);
 
 export default class CommentsPage extends React.Component {
+
+  constructor (props) {
+
+    super(props);
+
+    this.state = {
+      isLoading: true
+    };
+
+  }
 
   componentDidMount () {
 
@@ -19,11 +33,18 @@ export default class CommentsPage extends React.Component {
 
         console.log(error);
 
+    })
+    .finally(() => {
+
+        this.setState({
+            isLoading: false
+        });
+
     });
 
   }
 
-  saveComments(comment) {
+  saveComments = (comment) => {
 
     this.props.onAddComment(comment);
 
@@ -31,11 +52,12 @@ export default class CommentsPage extends React.Component {
 
   render() {
 
+    console.log('CommentsPage.render', this.state.isLoading);
     return (
       <div className="container">
         <PageTitle name="Comments" count="10" />
-        <CommentsForm saveComments={this.saveComments.bind(this)} />
-        <CommentsList comments={this.props.comments} />
+        <CommentsForm saveComments={this.saveComments} />
+        <CommentsListWithLoading isLoading={this.state.isLoading} comments={this.props.comments} />
       </div>
     );
 

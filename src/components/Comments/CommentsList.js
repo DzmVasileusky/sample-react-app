@@ -4,6 +4,7 @@ import Comment from './Comment.js'
 
 const CommentsList = ({ comments }) => {
 
+  console.log('CommentsList.render');
   return (
     <div className="comments">
       {
