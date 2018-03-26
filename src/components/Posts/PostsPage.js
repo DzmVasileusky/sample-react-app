@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import PageTitle from '../Common/PageTitle.js';
+import PageTitle from '../../shared/components/PageTitle/PageTitle.js';
 import AllPostsPage from './AllPosts/AllPostsPage';
 import SinglePostPage from './SinglePost/SinglePostPage';
 
